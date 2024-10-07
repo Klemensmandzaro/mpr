@@ -29,11 +29,21 @@ public class MyRestService {
         }
     }
 
-    public void getColor(String color) {
+    public List<Zwierze> getColor(String color) {
         List<Zwierze> zwierzetacolor = new ArrayList<>();
         for (Zwierze zw : zwierzeta) {
             if (zw.getColor().equals(color)) {
-                this.zwierzetacolor.add()
+                zwierzetacolor.add(zw);
+            }
+        }
+        return zwierzetacolor;
+    }
+
+    public void zmien(Zwierze zw) {
+        for (Zwierze zwi : zwierzeta) {
+            if (zwi.getName().equals(zw.getName())) {
+                zwi.setColor(zw.getColor());
+
             }
         }
     }

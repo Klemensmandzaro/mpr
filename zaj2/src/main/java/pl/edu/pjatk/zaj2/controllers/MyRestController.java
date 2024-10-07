@@ -1,8 +1,6 @@
 package pl.edu.pjatk.zaj2.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pjatk.zaj2.services.MyRestService;
 import pl.edu.pjatk.zaj2.services.Zwierze;
@@ -33,8 +31,13 @@ public class MyRestController {
     }
 
     @GetMapping("/getbycolor/{color}")
-    public void getByColor(@PathVariable String color){
+    public List<Zwierze> getByColor(@PathVariable String color){
+        return myRestService.getColor(color);
+    }
 
+    @PutMapping("/putcos")
+    public void putCos(@RequestBody Zwierze zw){
+        myRestService.zmien(zw);
     }
 
 }
