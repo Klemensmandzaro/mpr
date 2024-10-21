@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CarTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-10-21T08:21:36" hostname="GDA303-06" time="0.011">
+  <properties/>
+  <testcase name="carNotDriveWhenItHasNoFuelAndNoBatteryANDDistanceIsNotOk()" classname="CarTest" time="0.011"/>
+  <system-out><![CDATA[Podladuj akumulator
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
