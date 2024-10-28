@@ -54,16 +54,14 @@ public class Zwierze {
     }
 
     public void setIdentyfikator() {
-        this.name = name;
-        this.color = color;
         int id = 0;
         char[] chars = name.toCharArray();
         char[] chars2 = color.toCharArray();
         for (char c : chars) {
-            id+=(int) c;
+            id+= c;
         }
         for (char c : chars2) {
-            id+=(int) c;
+            id+= c;
         }
         this.identyfikator = id;
     }

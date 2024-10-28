@@ -51,4 +51,13 @@ public class MyRestController {
         return this.myRestService.getById(id);
     }
 
+    @GetMapping("/getalllower")
+    public List<Zwierze> Zwierzelower(){
+        return myRestService.findAlllower();
+    }
+
+    @PostMapping("/addcosupper")
+    public void addCosupper(@RequestBody Zwierze zw){
+        myRestService.addupper(zw);
+    }
 }

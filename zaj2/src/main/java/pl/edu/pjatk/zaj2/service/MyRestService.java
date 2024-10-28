@@ -1,5 +1,7 @@
 package pl.edu.pjatk.zaj2.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import pl.edu.pjatk.zaj2.repository.MyRestRepository;
 
@@ -9,11 +11,16 @@ import java.util.Optional;
 @Service
 public class MyRestService {
     private MyRestRepository repository;
+    @Autowired
+    private LetterService letterService;
 
-    public MyRestService(MyRestRepository repository) {
+
+
+    public MyRestService(MyRestRepository repository, LetterService letterService) {
         this.repository = repository;
         repository.save(new Pies("KArol", "szary"));
         repository.save(new Kot("Stefan", "rudy"));
+        this.letterService=letterService;
     }
 
     public List<Zwierze> findAll() {
@@ -21,6 +28,8 @@ public class MyRestService {
     }
 
     public void add(Zwierze zw) {
+
+
         this.repository.save(new Zwierze(zw.name, zw.color));
     }
 
@@ -58,5 +67,21 @@ public class MyRestService {
 
     public Optional<Zwierze> getById(Long id) {
         return this.repository.findById(id);
+    }
+
+    public List<Zwierze> findAlllower() {
+        for (Zwierze zw : this.repository.findAll()) {
+            zw.setName(letterService.lower(zw.getName())) ;
+            zw.setColor(letterService.lower(zw.getColor()));
+            zw.setIdentyfikator();
+            repository.save(zw);
+        }
+        return this.repository.findAll();
+    }
+
+    public void addupper(Zwierze zw) {
+        zw.setName(letterService.upper(zw.getName()));
+        zw.setColor(letterService.upper(zw.getColor()));
+        this.repository.save(zw);
     }
 }
