@@ -14,7 +14,8 @@ public class LetterService {
 
     public String lower(String str) {
         str = str.toLowerCase();
-        str = str.substring(0, 1).toUpperCase();
+
+        str = str.substring(0, 1).toUpperCase()+str.substring(1).toLowerCase();
         return str;
     }
 }

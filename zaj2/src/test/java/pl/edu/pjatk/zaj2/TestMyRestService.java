@@ -11,6 +11,7 @@ import pl.edu.pjatk.zaj2.service.Zwierze;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -28,22 +29,34 @@ public class TestMyRestService {
     @Test
     public void addChangesLettersToUpperCase(){
         Zwierze zw = new Zwierze("Kazik", "Szary");
-        myRestService.addupper(zw);
 
+        when(letterService.upper("Kazik")).thenReturn("KAZIK");
+        when(letterService.upper("Szary")).thenReturn("SZARY");
+        myRestService.addupper(zw);
         verify(letterService, times(2)).upper(any());
     }
 
     @Test
     public void addChangesLettersToLowerCase(){ //poprawic bo nie dziala
-        when(myRestRepository.findAll()).thenReturn(List.of(new Zwierze("Kazik", "Szary")));
-        Zwierze zw = new Zwierze("Kazik", "Szary");
-        myRestRepository.save(zw);
+        when(myRestRepository.findAll()).thenReturn(List.of(new Zwierze("Kazik", "Szary"), new Zwierze("Kazik", "Czarny")));
+        when(letterService.lower("Kazik")).thenReturn("Kazik");
+        when(letterService.lower("Szary")).thenReturn("Szary");
+        when(letterService.lower("Czarny")).thenReturn("Czarny");
         myRestService.findAlllower();
-        verify(letterService).lower(any());
+        verify(letterService, times(4)).lower(any());
     }
 
 
-    //identyfikator ma poprawna wartosc - dokladna wartosc liczbowa(dokładna wartość np. 1056)
+    @Test
+    public void identyficatorHasExpectedValue(){
+        Zwierze zw = Mockito.spy(new Zwierze("Karol", "Szary"));
+
+        myRestService.add(zw);
+        int powinno = 1042;
+        verify(zw, times(1)).setIdentyfikator();
+        assertEquals(powinno, zw.getIdentyfikator());
+
+    }
 
 
 }

@@ -29,8 +29,9 @@ public class MyRestService {
 
     public void add(Zwierze zw) {
 
+        zw.setIdentyfikator();
+        this.repository.save(zw);
 
-        this.repository.save(new Zwierze(zw.name, zw.color));
     }
 
     public void remove(String name) {
@@ -71,10 +72,11 @@ public class MyRestService {
 
     public List<Zwierze> findAlllower() {
         for (Zwierze zw : this.repository.findAll()) {
-            zw.setName(letterService.lower(zw.getName())) ;
+            zw.setName(letterService.lower(zw.getName()));
             zw.setColor(letterService.lower(zw.getColor()));
             zw.setIdentyfikator();
             repository.save(zw);
+
         }
         return this.repository.findAll();
     }
@@ -82,6 +84,8 @@ public class MyRestService {
     public void addupper(Zwierze zw) {
         zw.setName(letterService.upper(zw.getName()));
         zw.setColor(letterService.upper(zw.getColor()));
+        zw.setIdentyfikator();
         this.repository.save(zw);
+
     }
 }

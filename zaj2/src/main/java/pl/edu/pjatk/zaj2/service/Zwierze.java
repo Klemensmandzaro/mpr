@@ -26,11 +26,11 @@ public class Zwierze {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public String getColor() {
-        return color;
+        return this.color;
     }
 
     public void setName(String name) {
