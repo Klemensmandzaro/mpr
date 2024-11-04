@@ -42,6 +42,9 @@ public class MyRestService {
 
     public void remove(String name) {
         List<Zwierze> zwierze = this.repository.findByName(name);
+        if (zwierze.isEmpty()) {
+            throw new ResorceNotExistException();
+        }
         this.repository.deleteAll(zwierze);
     }
 

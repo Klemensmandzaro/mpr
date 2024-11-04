@@ -4,7 +4,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import pl.edu.pjatk.zaj2.exception.ChangeObjectWithNullValuesException;
 import pl.edu.pjatk.zaj2.exception.IdentyfierAlreadyExistException;
+import pl.edu.pjatk.zaj2.exception.ResorceNotExistException;
 import pl.edu.pjatk.zaj2.repository.MyRestRepository;
 import pl.edu.pjatk.zaj2.service.LetterService;
 import pl.edu.pjatk.zaj2.service.MyRestService;
@@ -12,6 +14,7 @@ import pl.edu.pjatk.zaj2.service.Zwierze;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -98,6 +101,78 @@ public class TestMyRestService {
         assertEquals(powinno, zw.getIdentyfikator());
 
     }
+
+    @Test
+    public void removeObjectExist(){
+        Zwierze zw = new Zwierze("Kazik", "Szary");
+        List<Zwierze> zwierze = List.of(zw);
+        when(myRestRepository.findByName("Kazik")).thenReturn(zwierze);
+        myRestService.remove("Kazik");
+        verify(myRestRepository, times(1)).deleteAll(zwierze);
+    }
+
+    @Test
+    public void removeObjectNotExist(){
+        List<Zwierze> zwierze = List.of();
+        when(myRestRepository.findByName("Kazik")).thenReturn(zwierze);
+        assertThrows(ResorceNotExistException.class, () ->
+                myRestService.remove("Kazik"));
+    }
+
+    @Test
+    public void changedObjectNotExistButHasGoodValues(){
+        Zwierze zw = Mockito.spy(new Zwierze("Karol", "Szary"));
+        List<Zwierze> zwierze = List.of();
+        when(zw.getName()).thenReturn("Karol");
+        when(zw.getId()).thenReturn(1L);
+        when(zw.getColor()).thenReturn("Szary");
+        when(myRestRepository.findById(1L)).thenReturn(Optional.empty());
+        assertThrows(ResorceNotExistException.class, () ->
+                myRestService.zmien(zw));
+    }
+
+    @Test
+    public void changedObjectExistButHasWrongValues(){
+        Zwierze zw = Mockito.spy(new Zwierze("Karol", "Szary"));
+        List<Zwierze> zwierze = List.of();
+        when(zw.getName()).thenReturn("");
+        when(zw.getId()).thenReturn(1L);
+        when(zw.getColor()).thenReturn("Szary");
+        assertThrows(ChangeObjectWithNullValuesException.class, () ->
+                myRestService.zmien(zw));
+    }
+
+    @Test
+    public void changedObjectNotExistAndHasWrongValues(){
+        Zwierze zw = Mockito.spy(new Zwierze("Karol", "Szary"));
+        List<Zwierze> zwierze = List.of();
+        when(zw.getName()).thenReturn("");
+        when(zw.getId()).thenReturn(1L);
+        when(zw.getColor()).thenReturn("Szary");
+        when(myRestRepository.findById(1L)).thenReturn(Optional.empty());
+        assertThrows(ChangeObjectWithNullValuesException.class, () ->
+                myRestService.zmien(zw));
+        assertThrows(ResorceNotExistException.class, () ->
+                myRestService.zmien(zw));
+        //zapytać o to
+    }
+
+    @Test
+    public void changedObjectExistAndHasGoodValues(){
+        Zwierze zw = Mockito.spy(new Zwierze("Karol", "Szary"));
+        when(zw.getName()).thenReturn("Karol");
+        when(zw.getId()).thenReturn(1L);
+        when(zw.getColor()).thenReturn("Szary");
+        when(myRestRepository.findById(1L)).thenReturn(Optional.of(zw));
+        myRestService.zmien(zw);
+        verify(myRestRepository, times(1)).save(zw);
+
+    }
+
+
+
+
+
 
     //dodac testy do zmian i delete(remove)
 }
