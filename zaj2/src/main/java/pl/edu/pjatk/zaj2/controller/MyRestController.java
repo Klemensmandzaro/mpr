@@ -1,6 +1,8 @@
 package pl.edu.pjatk.zaj2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pjatk.zaj2.service.MyRestService;
 import pl.edu.pjatk.zaj2.service.Zwierze;
@@ -17,47 +19,51 @@ public class MyRestController {
         this.myRestService=myRestService;
     }
     @GetMapping("/getall")
-    public List<Zwierze> Zwierze(){
-        return myRestService.findAll();
+    public ResponseEntity<List<Zwierze>> Zwierze(){
+        return new ResponseEntity<>(myRestService.findAll(), HttpStatus.OK);
     }
 
     @PostMapping("/addcos")
-    public void addCos(@RequestBody Zwierze zw){
+    public ResponseEntity<Void> addCos(@RequestBody Zwierze zw){
         myRestService.add(zw);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping("/deletezw/{name}")
-    public void deleteZw(@PathVariable String name){
+    public ResponseEntity<Void> deleteZw(@PathVariable String name){
         myRestService.remove(name);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/getbycolor/{color}")
-    public List<Zwierze> getByColor(@PathVariable String color){
-        return myRestService.getByColor(color);
+    public ResponseEntity<List<Zwierze>> getByColor(@PathVariable String color){
+        return new ResponseEntity<>(myRestService.getByColor(color), HttpStatus.OK);
     }
 
     @PatchMapping("/putcos")
-    public void putCos(@RequestBody Zwierze zw){
+    public ResponseEntity<Void> putCos(@RequestBody Zwierze zw){
         myRestService.zmien(zw);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @GetMapping("zwierze/name/{name}")
-    public List<Zwierze> findByName(@PathVariable String name){
-        return this.myRestService.getByName(name);
+    public ResponseEntity<List<Zwierze>> findByName(@PathVariable String name){
+        return new ResponseEntity<>(this.myRestService.getByName(name), HttpStatus.OK);
     }
 
     @GetMapping("zwierze/id/{id}")
-    public Optional<Zwierze> findById(@PathVariable Long id){
-        return this.myRestService.getById(id);
+    public ResponseEntity<Zwierze> findById(@PathVariable Long id){
+        return new ResponseEntity<>(this.myRestService.getById(id), HttpStatus.OK);
     }
 
     @GetMapping("/getalllower")
-    public List<Zwierze> Zwierzelower(){
-        return myRestService.findAlllower();
+    public ResponseEntity<List<Zwierze>> Zwierzelower(){
+        return new ResponseEntity<>(myRestService.findAlllower(), HttpStatus.OK);
     }
 
     @PostMapping("/addcosupper")
-    public void addCosupper(@RequestBody Zwierze zw){
+    public ResponseEntity<Void> addCosupper(@RequestBody Zwierze zw){
         myRestService.addupper(zw);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

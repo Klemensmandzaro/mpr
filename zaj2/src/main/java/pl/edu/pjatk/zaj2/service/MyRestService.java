@@ -3,6 +3,9 @@ package pl.edu.pjatk.zaj2.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+import pl.edu.pjatk.zaj2.exception.ChangeObjectWithNullValuesException;
+import pl.edu.pjatk.zaj2.exception.IdentyfierAlreadyExistException;
+import pl.edu.pjatk.zaj2.exception.ResorceNotExistException;
 import pl.edu.pjatk.zaj2.repository.MyRestRepository;
 
 import java.util.List;
@@ -30,6 +33,9 @@ public class MyRestService {
     public void add(Zwierze zw) {
 
         zw.setIdentyfikator();
+        if (zw.identyfikator==this.repository.findByIdentyfikator(zw.getIdentyfikator()).getIdentyfikator()) {
+            throw new IdentyfierAlreadyExistException();
+        }
         this.repository.save(zw);
 
     }
@@ -47,18 +53,22 @@ public class MyRestService {
         Long id = zw.getId();
         String name = zw.getName();
         String color = zw.getColor();
+        if (name.isEmpty() || color.isEmpty()) {
+            throw new ChangeObjectWithNullValuesException();
+        }
         Optional<Zwierze> zwierze = this.repository.findById(id);
-        if (zwierze.isPresent()) {
+        if (zwierze.isEmpty())
+        {
+            throw new ResorceNotExistException();
+        }
+
 
             Zwierze zwi = zwierze.get();
             zwi.setColor(color);
             zwi.setIdentyfikator();
             this.repository.save(zwi);
 
-        }
-        else {
-            System.out.println("Podaj dobre id");
-        }
+
 
     }
 
@@ -66,8 +76,13 @@ public class MyRestService {
         return this.repository.findByName(name);
     }
 
-    public Optional<Zwierze> getById(Long id) {
-        return this.repository.findById(id);
+    public Zwierze getById(Long id) {
+        Optional<Zwierze> zw = this.repository.findById(id);
+        if (zw.isEmpty())
+        {
+            throw new ResorceNotExistException();
+        }
+        return zw.get();
     }
 
     public List<Zwierze> findAlllower() {
@@ -85,6 +100,9 @@ public class MyRestService {
         zw.setName(letterService.upper(zw.getName()));
         zw.setColor(letterService.upper(zw.getColor()));
         zw.setIdentyfikator();
+        if (zw.getIdentyfikator()==this.repository.findByIdentyfikator(zw.getIdentyfikator()).getIdentyfikator()) {
+            throw new IdentyfierAlreadyExistException();
+        }
         this.repository.save(zw);
 
     }

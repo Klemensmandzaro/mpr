@@ -13,4 +13,5 @@ public interface MyRestRepository extends CrudRepository<Zwierze, Long> {
     List<Zwierze> findByColor(String color);
     Optional<Zwierze> findById(Long id);
     List<Zwierze> findAll();
+    Zwierze findByIdentyfikator(int identyfikator);
 }
