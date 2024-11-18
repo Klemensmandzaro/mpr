@@ -1,5 +1,10 @@
 package pl.edu.pjatk.zaj2.service;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -8,6 +13,9 @@ import pl.edu.pjatk.zaj2.exception.IdentyfierAlreadyExistException;
 import pl.edu.pjatk.zaj2.exception.ResorceNotExistException;
 import pl.edu.pjatk.zaj2.repository.MyRestRepository;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -108,5 +116,36 @@ public class MyRestService {
         }
         this.repository.save(zw);
 
+    }
+
+    public byte[] zrobPdf(Long id) throws IOException {
+        if (repository.findById(id).isPresent()) {
+            Zwierze zw = repository.findById(id).get();
+
+            PDDocument document = new PDDocument();
+            document.addPage(new PDPage());
+            PDPageContentStream kontent = new PDPageContentStream(document, document.getPage(0));
+            kontent.beginText();
+            kontent.setFont(new PDType1Font(Standard14Fonts.FontName.TIMES_ROMAN), 10);
+            kontent.newLineAtOffset(20, 750);
+            kontent.setLeading(14.5f);
+            kontent.showText("id: " + zw.getId());
+            kontent.newLine();
+            kontent.showText("color: " + zw.getColor());
+            kontent.newLine();
+            kontent.showText("imie: " + zw.getName());
+            kontent.newLine();
+            kontent.showText("identyfikator: " + zw.getIdentyfikator());
+            kontent.endText();
+            kontent.close();
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            document.save(baos);
+            document.close();
+            System.out.println(Arrays.toString(baos.toByteArray()));
+            return baos.toByteArray();
+        } else {
+            throw new ResorceNotExistException();
+        }
     }
 }

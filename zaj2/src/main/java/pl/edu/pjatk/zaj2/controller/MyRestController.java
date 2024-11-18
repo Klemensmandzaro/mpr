@@ -1,12 +1,16 @@
 package pl.edu.pjatk.zaj2.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.edu.pjatk.zaj2.service.MyRestService;
 import pl.edu.pjatk.zaj2.service.Zwierze;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,5 +69,18 @@ public class MyRestController {
     public ResponseEntity<Void> addCosupper(@RequestBody Zwierze zw){
         myRestService.addupper(zw);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/pdf/{id}")
+    public ResponseEntity<ByteArrayResource> getPdf(@PathVariable Long id) throws IOException {
+        byte[] pdfBytes = myRestService.zrobPdf(id);
+
+        ByteArrayResource resource = new ByteArrayResource(pdfBytes);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=example.pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .contentLength(pdfBytes.length)
+                .body(resource);
     }
 }
