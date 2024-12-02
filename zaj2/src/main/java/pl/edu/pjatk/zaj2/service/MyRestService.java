@@ -41,7 +41,8 @@ public class MyRestService {
     public void add(Zwierze zw) {
 
         zw.setIdentyfikator();
-        if (zw.identyfikator==this.repository.findByIdentyfikator(zw.getIdentyfikator()).getIdentyfikator()) {
+        Optional<Zwierze> existingZwierze = Optional.ofNullable(this.repository.findByIdentyfikator(zw.getIdentyfikator()));
+        if (existingZwierze.isPresent()) {
             throw new IdentyfierAlreadyExistException();
         }
         this.repository.save(zw);
@@ -148,4 +149,17 @@ public class MyRestService {
             throw new ResorceNotExistException();
         }
     }
+
+    public void removeById(Long id)
+    {
+        if (repository.findById(id).isPresent()) {
+            repository.deleteById(id);
+        }
+        else
+        {
+            throw new ResorceNotExistException();
+        }
+    }
+
+
 }

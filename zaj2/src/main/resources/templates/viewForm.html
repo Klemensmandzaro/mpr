@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .table-container {
+      display: flex; /* Ustawienie elastycznego układu */
+      gap: 20px; /* Odstęp między tabelami */
+    }
+    table {
+      border-collapse: collapse;
+      width: 300px; /* Opcjonalne: stała szerokość tabel */
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+<div class="table-container">
+<form action="#" th:action="@{/zwierze/add}" th:object="${zwierze}" method="post">
+  <table border="1">
+    <tr>
+      <td><label th:text="Name"/></td>
+      <td><input type="text" th:field="*{name}"/></td>
+    </tr>
+    <tr>
+      <td><label th:text="Color"/></td>
+      <td><input type="text" th:field="*{color}"/></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Dodaj"/></td>
+    </tr>
+  </table>
+</form>
+
+<form action="#" th:action="@{/zwierze/zmien}" th:object="${zwierze}" method="post">
+  <table border="1">
+    <tr>
+      <td><label th:text="Id"/></td>
+      <td><input type="text" th:field="*{id}"/></td>
+    </tr>
+    <tr>
+      <td><label th:text="Name"/></td>
+      <td><input type="text" th:field="*{name}"/></td>
+    </tr>
+    <tr>
+      <td><label th:text="Color"/></td>
+      <td><input type="text" th:field="*{color}"/></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Zmien"/></td>
+    </tr>
+  </table>
+</form>
+
+<form action="#" th:action="@{/zwierze/usun}" th:object="${zwierze}" method="post">
+  <table border="1">
+    <tr>
+      <td><label th:text="Id"/></td>
+      <td><input type="text" th:field="*{id}"/></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Usun"/></td>
+    </tr>
+  </table>
+</form>
+</div>
+</body>
+</html>
