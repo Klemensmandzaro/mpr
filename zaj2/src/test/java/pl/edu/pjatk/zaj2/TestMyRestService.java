@@ -199,7 +199,7 @@ public class TestMyRestService {
         Long id = 1L;
         when(myRestRepository.findById(id)).thenReturn(Optional.empty());
         ResorceNotExistException exception = assertThrows(ResorceNotExistException.class, () -> {
-            myRestService.removebyId(id);
+            myRestService.removeById(id);
         });
 
         assertEquals("Podany zasób nie istnieje", exception.getMessage());
@@ -211,7 +211,7 @@ public class TestMyRestService {
         zw.setId(1L);
         zw.setIdentyfikator();
         when(myRestRepository.findById(1L)).thenReturn(Optional.of(zw));
-        myRestService.removebyId(zw.getId());
+        myRestService.removeById(zw.getId());
         verify(myRestRepository, times(1)).deleteById(1L);
 
 
