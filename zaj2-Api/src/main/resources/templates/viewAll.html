@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Color</td>
+    </tr>
+    <tr th:each="zwierze, iter : ${zwierzeList}">
+        <td th:id="'row-' + ${iter.index+1}+ '-id'" th:text="${zwierze.id}"></td>
+        <td th:id="'row-' + ${iter.index+1}+ '-name'" th:text="${zwierze.name}"></td>
+        <td th:id="'row-' + ${iter.index+1}+ '-color'" th:text="${zwierze.color}"></td>
+    </tr>
+</table>
+<a th:href="@{/view/form}">Formularze dla zwierzat</a>
+</body>
+</html>
