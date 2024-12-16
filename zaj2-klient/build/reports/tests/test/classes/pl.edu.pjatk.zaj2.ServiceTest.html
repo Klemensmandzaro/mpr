@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - ServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>ServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/pl.edu.pjatk.zaj2.html">pl.edu.pjatk.zaj2</a> &gt; ServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">14</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.686s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">add_AddsAnimalSuccessfully()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">addupper_AddsUppercaseAnimalSuccessfully()</td>
+<td class="success">0.480s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findAll_ReturnsEmptyList_WhenNoAnimalsExist()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findAll_ReturnsListOfAnimals_WhenAnimalsExist()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findAll_ThrowsException_WhenServerErrorOccurs()</td>
+<td class="success">0.004s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">findAlllower_ReturnsLowercaseAnimals()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getByColor_ReturnsAnimalsByColor()</td>
+<td class="success">0.028s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getById_ReturnsAnimalById()</td>
+<td class="success">0.006s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getByName_ReturnsAnimalsByName()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">removeById_RemovesAnimalSuccessfully()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">testFindAll_Zwierzeta()</td>
+<td class="success">0.003s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">zmien_UpdatesAnimalSuccessfully()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">zrobPdf_GeneratesPdfForValidId()</td>
+<td class="success">0.148s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">zrobPdf_ThrowsExceptionForInvalidId()</td>
+<td class="success">0.002s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+19:43:14.775 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [pl.edu.pjatk.zaj2.ServiceTest]: ServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:43:14.847 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration pl.edu.pjatk.zaj2.Zaj2Application for test class pl.edu.pjatk.zaj2.ServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2024-12-16T19:43:15.076+01:00  INFO 43324 --- [zaj2] [    Test worker] pl.edu.pjatk.zaj2.ServiceTest            : Starting ServiceTest using Java 21.0.4 with PID 43324 (started by kamil in C:\Users\kamil\Studia\mpr\zaj2-klient)
+2024-12-16T19:43:15.077+01:00  INFO 43324 --- [zaj2] [    Test worker] pl.edu.pjatk.zaj2.ServiceTest            : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-12-16T19:43:15.393+01:00  INFO 43324 --- [zaj2] [    Test worker] pl.edu.pjatk.zaj2.ServiceTest            : Started ServiceTest in 0.493 seconds (process running for 1.168)
+[37, 80, 68, 70, 45, 49, 46, 54, 10, 37, -10, -28, -4, -33, 10, 49, 32, 48, 32, 111, 98, 106, 10, 60, 60, 10, 47, 84, 121, 112, 101, 32, 47, 67, 97, 116, 97, 108, 111, 103, 10, 47, 86, 101, 114, 115, 105, 111, 110, 32, 47, 49, 46, 54, 10, 47, 80, 97, 103, 101, 115, 32, 50, 32, 48, 32, 82, 10, 62, 62, 10, 101, 110, 100, 111, 98, 106, 10, 55, 32, 48, 32, 111, 98, 106, 10, 60, 60, 10, 47, 76, 101, 110, 103, 116, 104, 32, 49, 48, 48, 10, 47, 70, 105, 108, 116, 101, 114, 32, 47, 70, 108, 97, 116, 101, 68, 101, 99, 111, 100, 101, 10, 62, 62, 10, 115, 116, 114, 101, 97, 109, 13, 10, 120, -100, 115, 10, -31, -46, 119, 51, 84, 48, 52, 80, 8, 73, -29, 50, 50, 80, 48, 55, 5, -78, 82, -72, 12, 77, -12, 76, 21, 66, 124, -72, 52, 50, 83, -84, 20, 12, 53, 21, 66, -78, -72, 66, -76, -72, 52, -110, -13, 115, -14, -117, -84, 20, -118, -85, 18, -117, 42, -31, -126, -103, -71, -103, -87, 86, 10, -34, -119, 69, -7, 57, 8, -79, -108, -44, -68, -110, -54, -76, -52, -20, -60, 18, -112, 6, 67, 3, 19, 35, -80, -100, 107, 8, 23, 0, 76, -44, 29, -4, 13, 10, 101, 110, 100, 115, 116, 114, 101, 97, 109, 10, 101, 110, 100, 111, 98, 106, 10, 56, 32, 48, 32, 111, 98, 106, 10, 60, 60, 10, 47, 76, 101, 110, 103, 116, 104, 32, 49, 56, 57, 10, 47, 84, 121, 112, 101, 32, 47, 79, 98, 106, 83, 116, 109, 10, 47, 78, 32, 53, 10, 47, 70, 105, 108, 116, 101, 114, 32, 47, 70, 108, 97, 116, 101, 68, 101, 99, 111, 100, 101, 10, 47, 70, 105, 114, 115, 116, 32, 50, 55, 10, 62, 62, 10, 115, 116, 114, 101, 97, 109, 13, 10, 120, -100, 85, -114, -51, 10, -125, 64, 12, -124, 95, 101, 94, -96, -115, -21, 47, -126, 20, -86, -76, -105, 82, 40, 86, -24, 65, 60, 88, 93, 100, 15, -18, 22, 87, -95, 125, -5, 70, -123, -2, 28, 18, -104, 47, -109, 100, 92, 56, -16, -32, -69, -16, 33, -68, 24, 1, 68, 16, 34, -124, -120, 4, -110, -124, -118, -41, 67, -126, 46, 117, 39, 45, -24, -92, 90, -117, -46, -29, -123, 28, 21, 40, 51, -109, 30, 33, -80, -37, -3, 59, 65, 103, -39, -86, 58, 53, 79, -108, -50, -42, -63, 92, -95, 112, -71, 71, -15, -36, -85, -39, 54, 72, -34, 117, -105, 83, -108, 75, 107, -90, -95, -31, 23, -2, 10, 50, -93, 71, -98, 91, 68, -117, 94, 31, 28, 25, 114, -68, 31, 32, 56, -25, 87, -82, 1, 22, 23, 93, -89, -5, -72, -56, 25, 10, 80, 90, 91, -71, 78, 10, -43, 75, -69, -55, 77, 95, 107, -48, 65, 55, -90, 85, -70, 3, -35, -108, -34, 107, -85, 62, -128, 79, -66, 1, -70, 36, 77, 100, 13, 10, 101, 110, 100, 115, 116, 114, 101, 97, 109, 10, 101, 110, 100, 111, 98, 106, 10, 57, 32, 48, 32, 111, 98, 106, 10, 60, 60, 10, 47, 76, 101, 110, 103, 116, 104, 32, 51, 51, 10, 47, 82, 111, 111, 116, 32, 49, 32, 48, 32, 82, 10, 47, 73, 68, 32, 91, 60, 57, 55, 51, 65, 49, 55, 52, 51, 68, 66, 66, 68, 65, 70, 51, 48, 69, 54, 57, 53, 67, 53, 57, 57, 48, 67, 56, 50, 70, 68, 48, 49, 62, 32, 60, 57, 55, 51, 65, 49, 55, 52, 51, 68, 66, 66, 68, 65, 70, 51, 48, 69, 54, 57, 53, 67, 53, 57, 57, 48, 67, 56, 50, 70, 68, 48, 49, 62, 93, 10, 47, 84, 121, 112, 101, 32, 47, 88, 82, 101, 102, 10, 47, 83, 105, 122, 101, 32, 49, 48, 10, 47, 73, 110, 100, 101, 120, 32, 91, 48, 32, 57, 93, 10, 47, 87, 32, 91, 49, 32, 49, 32, 49, 93, 10, 47, 70, 105, 108, 116, 101, 114, 32, 47, 70, 108, 97, 116, 101, 68, 101, 99, 111, 100, 101, 10, 62, 62, 10, 115, 116, 114, 101, 97, 109, 13, 10, 120, -100, 99, 96, -8, -49, -56, -49, -64, -60, 1, 68, -116, 76, 28, 76, 76, 28, -52, 76, 28, 44, -116, 126, 12, -116, 127, 24, 0, 33, 36, 2, -104, 13, 10, 101, 110, 100, 115, 116, 114, 101, 97, 109, 10, 101, 110, 100, 111, 98, 106, 10, 115, 116, 97, 114, 116, 120, 114, 101, 102, 10, 53, 52, 52, 10, 37, 37, 69, 79, 70, 10]
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>WARNING: A Java agent has been loaded dynamically (C:\Users\kamil\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.10.2</a> at 16 gru 2024, 19:43:16</p>
+</div>
+</div>
+</body>
+</html>

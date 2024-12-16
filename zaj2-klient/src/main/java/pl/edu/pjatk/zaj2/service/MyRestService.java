@@ -1,5 +1,6 @@
 package pl.edu.pjatk.zaj2.service;
 
+import net.bytebuddy.implementation.bind.annotation.Default;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -23,20 +24,21 @@ import java.util.Optional;
 
 @Service
 public class MyRestService {
-    private RestClient restClient;
     @Autowired
-    private LetterService letterService;
+    private RestClient restClient;
 
 
 
-    public MyRestService(LetterService letterService) {
-        this.restClient = RestClient.create("http://localhost:8081/");
-        this.letterService=letterService;
+
+    public MyRestService(RestClient restClient) {
+        this.restClient = restClient;
     }
+
+
 
     public List<Zwierze> findAll() {
         List<Zwierze> zwierzeList = restClient.get()
-                .uri("getall")
+                .uri("http://localhost:8081/getall")
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});
 
@@ -45,7 +47,7 @@ public class MyRestService {
 
     public void add(Zwierze zw) {
         ResponseEntity<Void> responseEntity = restClient.post()
-                .uri("addcos")
+                .uri("http://localhost:8081/addcos")
                 .body(zw)
                 .contentType(MediaType.APPLICATION_JSON)
                 .retrieve()
@@ -55,7 +57,7 @@ public class MyRestService {
 
     public List<Zwierze> getByColor(String color) {
         List<Zwierze> zwierzeList = restClient.get()
-                .uri("getbycolor/"+color)
+                .uri("http://localhost:8081/getbycolor/"+color)
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});
 
@@ -64,7 +66,7 @@ public class MyRestService {
 
     public void zmien(Zwierze zw) {
         ResponseEntity<Void> responseEntity = restClient.patch()
-                .uri("putcos")
+                .uri("http://localhost:8081/putcos")
                 .body(zw)
                 .contentType(MediaType.APPLICATION_JSON)
                 .retrieve()
@@ -73,7 +75,7 @@ public class MyRestService {
 
     public List<Zwierze> getByName(String name) {
         List<Zwierze> zwierzeList = restClient.get()
-                .uri("zwierze/name/"+name)
+                .uri("http://localhost:8081/zwierze/name/"+name)
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});
 
@@ -82,7 +84,7 @@ public class MyRestService {
 
     public Zwierze getById(Long id) {
         Zwierze zwierze = restClient.get()
-                .uri("zwierze/id/"+id)
+                .uri("http://localhost:8081/zwierze/id/"+id)
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});
 
@@ -91,7 +93,7 @@ public class MyRestService {
 
     public List<Zwierze> findAlllower() {
         List<Zwierze> zwierzeList = restClient.get()
-                .uri("getalllower")
+                .uri("http://localhost:8081/getalllower")
                 .retrieve()
                 .body(new ParameterizedTypeReference<>() {});
 
@@ -100,7 +102,7 @@ public class MyRestService {
 
     public void addupper(Zwierze zw) {
         ResponseEntity<Void> responseEntity = restClient.post()
-                .uri("addcosupper")
+                .uri("http://localhost:8081/addcosupper")
                 .body(zw)
                 .contentType(MediaType.APPLICATION_JSON)
                 .retrieve()
@@ -109,9 +111,13 @@ public class MyRestService {
     }
 
     public byte[] zrobPdf(Long id) throws IOException {
-        MyRestService myRestService = new MyRestService(letterService);
-        if (myRestService.getById(id).getId().equals(id)) {
-            Zwierze zw = myRestService.getById(id);
+        MyRestService myRestService = new MyRestService(restClient);
+        Zwierze zw = restClient.get()
+                .uri("http://localhost:8081/zwierze/id/"+id)
+                .retrieve()
+                .body(new ParameterizedTypeReference<>() {});
+        if (zw.getId() != null) {
+
 
             PDDocument document = new PDDocument();
             document.addPage(new PDPage());
@@ -143,7 +149,7 @@ public class MyRestService {
     public void removeById(Long id)
     {
         ResponseEntity<Void> responseEntity = restClient.post()
-                .uri("delete/"+id)
+                .uri("http://localhost:8081/delete/"+id)
                 .contentType(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .toBodilessEntity();

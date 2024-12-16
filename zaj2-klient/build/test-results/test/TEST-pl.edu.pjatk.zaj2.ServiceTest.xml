@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="pl.edu.pjatk.zaj2.ServiceTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2024-12-16T18:43:15" hostname="KOMPIK" time="0.694">
+  <properties/>
+  <testcase name="addupper_AddsUppercaseAnimalSuccessfully()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.48"/>
+  <testcase name="zmien_UpdatesAnimalSuccessfully()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.002"/>
+  <testcase name="add_AddsAnimalSuccessfully()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.002"/>
+  <testcase name="getByColor_ReturnsAnimalsByColor()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.028"/>
+  <testcase name="getById_ReturnsAnimalById()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.006"/>
+  <testcase name="findAll_ThrowsException_WhenServerErrorOccurs()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.004"/>
+  <testcase name="testFindAll_Zwierzeta()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.003"/>
+  <testcase name="zrobPdf_GeneratesPdfForValidId()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.148"/>
+  <testcase name="removeById_RemovesAnimalSuccessfully()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.002"/>
+  <testcase name="findAll_ReturnsListOfAnimals_WhenAnimalsExist()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.003"/>
+  <testcase name="findAll_ReturnsEmptyList_WhenNoAnimalsExist()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.002"/>
+  <testcase name="findAlllower_ReturnsLowercaseAnimals()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.002"/>
+  <testcase name="zrobPdf_ThrowsExceptionForInvalidId()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.002"/>
+  <testcase name="getByName_ReturnsAnimalsByName()" classname="pl.edu.pjatk.zaj2.ServiceTest" time="0.002"/>
+  <system-out><![CDATA[Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+19:43:14.775 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [pl.edu.pjatk.zaj2.ServiceTest]: ServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+19:43:14.847 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration pl.edu.pjatk.zaj2.Zaj2Application for test class pl.edu.pjatk.zaj2.ServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2024-12-16T19:43:15.076+01:00  INFO 43324 --- [zaj2] [    Test worker] pl.edu.pjatk.zaj2.ServiceTest            : Starting ServiceTest using Java 21.0.4 with PID 43324 (started by kamil in C:\Users\kamil\Studia\mpr\zaj2-klient)
+2024-12-16T19:43:15.077+01:00  INFO 43324 --- [zaj2] [    Test worker] pl.edu.pjatk.zaj2.ServiceTest            : No active profile set, falling back to 1 default profile: "default"
+2024-12-16T19:43:15.393+01:00  INFO 43324 --- [zaj2] [    Test worker] pl.edu.pjatk.zaj2.ServiceTest            : Started ServiceTest in 0.493 seconds (process running for 1.168)
+[37, 80, 68, 70, 45, 49, 46, 54, 10, 37, -10, -28, -4, -33, 10, 49, 32, 48, 32, 111, 98, 106, 10, 60, 60, 10, 47, 84, 121, 112, 101, 32, 47, 67, 97, 116, 97, 108, 111, 103, 10, 47, 86, 101, 114, 115, 105, 111, 110, 32, 47, 49, 46, 54, 10, 47, 80, 97, 103, 101, 115, 32, 50, 32, 48, 32, 82, 10, 62, 62, 10, 101, 110, 100, 111, 98, 106, 10, 55, 32, 48, 32, 111, 98, 106, 10, 60, 60, 10, 47, 76, 101, 110, 103, 116, 104, 32, 49, 48, 48, 10, 47, 70, 105, 108, 116, 101, 114, 32, 47, 70, 108, 97, 116, 101, 68, 101, 99, 111, 100, 101, 10, 62, 62, 10, 115, 116, 114, 101, 97, 109, 13, 10, 120, -100, 115, 10, -31, -46, 119, 51, 84, 48, 52, 80, 8, 73, -29, 50, 50, 80, 48, 55, 5, -78, 82, -72, 12, 77, -12, 76, 21, 66, 124, -72, 52, 50, 83, -84, 20, 12, 53, 21, 66, -78, -72, 66, -76, -72, 52, -110, -13, 115, -14, -117, -84, 20, -118, -85, 18, -117, 42, -31, -126, -103, -71, -103, -87, 86, 10, -34, -119, 69, -7, 57, 8, -79, -108, -44, -68, -110, -54, -76, -52, -20, -60, 18, -112, 6, 67, 3, 19, 35, -80, -100, 107, 8, 23, 0, 76, -44, 29, -4, 13, 10, 101, 110, 100, 115, 116, 114, 101, 97, 109, 10, 101, 110, 100, 111, 98, 106, 10, 56, 32, 48, 32, 111, 98, 106, 10, 60, 60, 10, 47, 76, 101, 110, 103, 116, 104, 32, 49, 56, 57, 10, 47, 84, 121, 112, 101, 32, 47, 79, 98, 106, 83, 116, 109, 10, 47, 78, 32, 53, 10, 47, 70, 105, 108, 116, 101, 114, 32, 47, 70, 108, 97, 116, 101, 68, 101, 99, 111, 100, 101, 10, 47, 70, 105, 114, 115, 116, 32, 50, 55, 10, 62, 62, 10, 115, 116, 114, 101, 97, 109, 13, 10, 120, -100, 85, -114, -51, 10, -125, 64, 12, -124, 95, 101, 94, -96, -115, -21, 47, -126, 20, -86, -76, -105, 82, 40, 86, -24, 65, 60, 88, 93, 100, 15, -18, 22, 87, -95, 125, -5, 70, -123, -2, 28, 18, -104, 47, -109, 100, 92, 56, -16, -32, -69, -16, 33, -68, 24, 1, 68, 16, 34, -124, -120, 4, -110, -124, -118, -41, 67, -126, 46, 117, 39, 45, -24, -92, 90, -117, -46, -29, -123, 28, 21, 40, 51, -109, 30, 33, -80, -37, -3, 59, 65, 103, -39, -86, 58, 53, 79, -108, -50, -42, -63, 92, -95, 112, -71, 71, -15, -36, -85, -39, 54, 72, -34, 117, -105, 83, -108, 75, 107, -90, -95, -31, 23, -2, 10, 50, -93, 71, -98, 91, 68, -117, 94, 31, 28, 25, 114, -68, 31, 32, 56, -25, 87, -82, 1, 22, 23, 93, -89, -5, -72, -56, 25, 10, 80, 90, 91, -71, 78, 10, -43, 75, -69, -55, 77, 95, 107, -48, 65, 55, -90, 85, -70, 3, -35, -108, -34, 107, -85, 62, -128, 79, -66, 1, -70, 36, 77, 100, 13, 10, 101, 110, 100, 115, 116, 114, 101, 97, 109, 10, 101, 110, 100, 111, 98, 106, 10, 57, 32, 48, 32, 111, 98, 106, 10, 60, 60, 10, 47, 76, 101, 110, 103, 116, 104, 32, 51, 51, 10, 47, 82, 111, 111, 116, 32, 49, 32, 48, 32, 82, 10, 47, 73, 68, 32, 91, 60, 57, 55, 51, 65, 49, 55, 52, 51, 68, 66, 66, 68, 65, 70, 51, 48, 69, 54, 57, 53, 67, 53, 57, 57, 48, 67, 56, 50, 70, 68, 48, 49, 62, 32, 60, 57, 55, 51, 65, 49, 55, 52, 51, 68, 66, 66, 68, 65, 70, 51, 48, 69, 54, 57, 53, 67, 53, 57, 57, 48, 67, 56, 50, 70, 68, 48, 49, 62, 93, 10, 47, 84, 121, 112, 101, 32, 47, 88, 82, 101, 102, 10, 47, 83, 105, 122, 101, 32, 49, 48, 10, 47, 73, 110, 100, 101, 120, 32, 91, 48, 32, 57, 93, 10, 47, 87, 32, 91, 49, 32, 49, 32, 49, 93, 10, 47, 70, 105, 108, 116, 101, 114, 32, 47, 70, 108, 97, 116, 101, 68, 101, 99, 111, 100, 101, 10, 62, 62, 10, 115, 116, 114, 101, 97, 109, 13, 10, 120, -100, 99, 96, -8, -49, -56, -49, -64, -60, 1, 68, -116, 76, 28, 76, 76, 28, -52, 76, 28, 44, -116, 126, 12, -116, 127, 24, 0, 33, 36, 2, -104, 13, 10, 101, 110, 100, 115, 116, 114, 101, 97, 109, 10, 101, 110, 100, 111, 98, 106, 10, 115, 116, 97, 114, 116, 120, 114, 101, 102, 10, 53, 52, 52, 10, 37, 37, 69, 79, 70, 10]
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\kamil\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.19\154da3a65b4f4a909d3e5bdec55d1b2b4cbb6ce1\byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
